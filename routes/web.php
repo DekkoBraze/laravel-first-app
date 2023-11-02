@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +15,9 @@ use App\Http\Controllers\AboutController;
 |
 */
 
-Route::get('/', [AboutController::class, 'index']);
+Route::get('/', [AboutController::class, 'index'])->name('index');
+Route::get('/profile/{profile_name}', App\Http\Controllers\ProfileController::class)->name('profile');
+Route::get('/to_homepage', App\Http\Controllers\HomeController::class)->name('to_homepage');
+
+Auth::routes();
+
