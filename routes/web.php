@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +17,17 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', [AboutController::class, 'index'])->name('index');
-Route::get('/profile/{profile_name}', App\Http\Controllers\ProfileController::class)->name('profile');
-Route::get('/to_homepage', App\Http\Controllers\HomeController::class)->name('to_homepage');
+Route::get('/', AboutController::class)->name('index');
+Route::get('/profile/{profile_name}', ProfileController::class)->name('profile');
+Route::get('/to_homepage', HomeController::class)->name('to_homepage');
+
+Route::group(['namespace' => 'App\Http\Controllers\Entity'], function() {
+  Route::get('/entities', IndexController::class)->name('entity.index');
+  Route::get('/entities/create', CreateController::class)->name('entity.create');
+  Route::post('/entities', StoreController::class)->name('entity.store');
+});
+
+
 
 Auth::routes();
 

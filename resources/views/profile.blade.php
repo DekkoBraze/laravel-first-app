@@ -1,14 +1,11 @@
-<!DOCTYPE html>
+@extends('layouts.app')
+@section('content')
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>MyUniverse</title>
-</head>
-<body>
+<div>
 <h1>{{$user->name}}</h1>
 <h2>{{$user->status}}</h2>
 <p>{{$user->description}}</p>
-<a href = >Добавить медиа</a>
-</body>
-</html>
+<a href={{route('entity.index')}}>Все медиа</a>
+</div>
+
+@endsection
